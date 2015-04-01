@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="java02.test19.server.ProductDao">
+
+<!-- 객체의 컬럼과 프로퍼티를 연결한다. -->
+  <resultMap type="Board" id="productMap">
+  <!-- PK 컬럼은 id태그를 사용하여 지정한다. -->
+    <id column="NO" property="no"/>
+    <result column="UID" property="userid"/>
+    <result column="HEAD" property="title"/>
+    <result column="SECTION" property="section"/>
+    <result column="BODY" property="context"/>
+    <result column="DATE" property="date"/>
+    <result column="PIC" property="pic"/>
+  </resultMap>
+
+<sql id="productSelect">
+  SELECT NO, UID, HEAD, SECTION, BODY, DATE, PIC
+  FROM BOARDS
+</sql>
+
+  <select id="selectList" parameterType="map" resultMap="productMap">
+    <include refid="productSelect"/>
+      ORDER BY NO DESC
+  </select>
+  <select id="selectOne" parameterType="int" resultMap="productMap">
+    <include refid="productSelect"/>
+     WHERE NO=#{value}
+  </select>
+  
+  <insert id="insert"
+          parameterType="Board">
+    INSERT INTO BOARDS(UID,HEAD,SECTION,BODY,DATE)
+    VALUES (#{userid}, #{title}, #{section}, #{context}, #{date})        
+  </insert>
+  
+  <update id="update"
+          parameterType="Board">
+    UPDATE BOARDS SET
+      HEAD=#{title},
+      SECTION=#{section},
+      BODY=#{context},
+      PIC=#{pic}
+    WHERE NO=#{no}          
+  </update>
+  
+  <delete id="delete"
+          parameterType="int">
+      DELETE FROM BOARDS WHERE NO=#{value}
+</delete>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+	<typeAliases>
+		<typeAlias type="java63.servlets.project.domain.Board" alias="Board"/>		
+		<typeAlias type="java63.servlets.project.domain.Exhibition" alias="Exhibition"/>
+		<typeAlias type="java63.servlets.project.domain.User" alias="User"/>
+	</typeAliases>
+	
+	
+	
+	<environments default="development">
+		
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://localhost:3306/museum?useUnicode=true&amp;characterEncoding=utf8"/>
+				<property name="username" value="museum"/>
+				<property name="password" value="museum"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="java63/servlets/project/dao/BoardDao.xml"/>
+		<mapper resource="java63/servlets/project/dao/ExhibitionDao.xml"/>
+		<mapper resource="java63/servlets/project/dao/UserDao.xml"/>
+	</mappers>
+	
+	
+</configuration>

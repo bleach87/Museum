@@ -1,0 +1,102 @@
+
+<html>
+<head>
+<link rel='stylesheet'
+      href='../css/bootstrap.css'>
+<link rel='stylesheet'
+      href='../css/bootstrap-theme.min.css'>
+<link rel='stylesheet' href='../css/common.css'>
+</head>
+<body>
+<div class='container'>
+<h1>게시물 등록</h1>
+<form class='form-horizontal' role='form' 
+  action='add' method='post'>
+
+<!-- <div class='form-group'>
+  <label for='userid' class='col-sm-2 control-label'>ID</label>
+  <div class='col-sm-10'>
+    <input type='text' class='form-control' 
+        id='userid' name='userid' placeholder='Write Your ID'>
+  </div>
+</div> -->
+
+<div class='form-group'>
+  <label for='title' class='col-sm-2 control-label'>제목</label>
+  <div class='col-sm-10'>
+    <input type='text' class='form-control' 
+        id='title' name='title' placeholder='Wtite Title'>
+  </div>
+</div>
+<div class='form-group'>
+  <label for='section' class='col-sm-2 control-label'>분류</label>
+  <div class='col-sm-10'>
+   <input type='text' class='form-control' 
+        id='section' name='section' placeholder='Select Section'>
+  </div>
+</div>
+<div class='form-group'>
+  <label for='context' class='col-sm-2 control-label'>내용</label>
+  <div class='col-sm-10'>
+   <input type='textarea' class='form-control' 
+        id='context' name='context' placeholder='Write Your Story'>
+  </div>
+</div>
+
+<!-- 
+<div class='form-group'>
+  <label for='date' cla../js/jquery-1.11.1.jsss='col-sm-2 control-label'>날짜</label>
+  <div class='col-sm-10'>
+   <input type='date' class='form-control' 
+        id='date' name='date' placeholder=''>
+  </div>
+</div>
+ -->
+
+<div class='form-group'>
+  <div class='col-sm-offset-2 col-sm-10'>
+    <button id='btnAdd' type='submit' class='btn btn-primary'>등록</button>
+    <button id='btnCancel' type='button' class='btn btn-primary'>취소</button>
+  </div>
+</div>
+</form>
+</div>
+<script src='../js/jquery-1.11.1.js'></script>
+<script>
+  $('#btnCancel').click(function(){
+    history.back();
+  });
+  
+	$('#btnAdd').click(function(){
+	/*   if ( $('#userid').val().length == 0) {
+		  alert('Please Use Your ID');
+		  return false;
+	  } */
+	  
+	  if ( $('#title').val().length == 0) {
+      alert('Please Insert TITLE');
+      return false;
+    }
+	  
+	  if ( $('#section').val().length == 0) {
+      alert('Please Select SECTION');
+      return false;
+    }
+	  
+	  if ( $('#context').val().length == 0) {
+	      alert('Please Write CONTEXT');
+	      return false;
+	    }
+/* 	  
+	  if ( $('#date').val().length == 0) {
+	      alert('Please Select Date');
+	      return false;
+	    }
+	   */
+	  
+	});
+	
+</script>
+</body>
+</html>
+

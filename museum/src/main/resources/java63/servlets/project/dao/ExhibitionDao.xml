@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- <sql> 태그 사용하기
+=> 자주 사용되는 SQL문은 별도로 정의해두고 포함한다.
+-->
+
+<mapper namespace="java02.test19.server.ExhibitionDao">
+
+  <!-- 객체의 컬럼과 프로퍼티를 연결한다. -->
+  <resultMap type="Exhibition" id="exchibitionMap">
+    <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
+    <id column="ENO" property="no"/>
+    <result column="TITLE" property="title"/>
+    <result column="START" property="startDate"/>
+    <result column="LAST" property="lastDate"/>
+    <result column="INTRO" property="introduction"/>
+    <result column="COUNT" property="count"/>
+	<result column="IMG" property="image"/>
+  </resultMap>  
+ 
+
+  <sql id="productSelect">
+    SELECT ENO, TITLE, START, LAST, INTRO, COUNT, INO 
+    FROM EXHIBITIONS
+  </sql>
+  
+  <select id="selectList" parameterType="map" resultMap="exchibitionMap">
+    <include refid="productSelect"/>
+    <if test="pageSize > 0">
+      limit #{startIndex}, #{pageSize}
+    </if>
+  </select>
+  
+  <select id="selectOne" parameterType="int" resultMap="exchibitionMap">
+    <include refid="productSelect"/> 
+    WHERE ENO=#{value}
+  </select>  
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
